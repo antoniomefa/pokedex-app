@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default Home = ({ navigation }) => {
     const [searchText, seTsearchText] = useState('');
+
+    useEffect(() => {
+        console.log('Home.js: useEffect');
+    }, []);
 
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center' }} >

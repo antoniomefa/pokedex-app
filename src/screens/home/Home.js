@@ -2,16 +2,48 @@ import React, { useState, useEffect } from 'react';
 import {StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { apiConnect } from '../../services/apiConnect';
+
+import PokemonList from './components/PokemonList';
+
 export default Home = ({ navigation }) => {
     const [searchText, seTsearchText] = useState('');
+    const [pokemonsList, setPokemonsList] = useState([]);
+    // console.log("PkemonsList------>", pokemonsList);
 
     useEffect(() => {
-        console.log('Home.js: useEffect');
+        (async() => {
+            await getPokemons();
+        })()
     }, []);
+
+    const getPokemons = async () => {
+        try {
+            const response = await apiConnect(null, 'pokemon');
+            const pokemonsArray = [];
+            for await (const pokemon of response.results) {
+                const pokemonDetails = await apiConnect(pokemon.url);
+                pokemonsArray.push({
+                id: pokemonDetails.id,
+                name: pokemonDetails.name,
+                type: pokemonDetails.types[0].type.name,
+                order: pokemonDetails.order,
+                image: pokemonDetails.sprites.other["official-artwork"].front_default,
+                });
+            }
+            setPokemonsList([...pokemonsList, ...pokemonsArray]);
+        } catch(error) {  
+            console.log("🚀 ~ file: Home.js ~ line 22 ~ getPokemons ~ error", error)
+        }
+    }
+
+    const onSelectPokemon = (pokemon) => {
+        navigation.navigate('Info', { pokemon });
+    }
 
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center' }} >
-            <View style={styles.container}>
+            
                 <View style={styles.header}>
                     <Text style={styles.title}>
                         Pokédex
@@ -29,7 +61,7 @@ export default Home = ({ navigation }) => {
                 <TouchableOpacity style={{backgroundColor: 'lightblue', width: 80}} onPress={() => navigation.navigate('Info')}>
                     <Text style={{ color: 'black'}}>Ir a Info</Text>
                 </TouchableOpacity>
-            </View>
+                <PokemonList pokemonsList={pokemonsList} onPress={onSelectPokemon} />
         </SafeAreaView>
     );
 }

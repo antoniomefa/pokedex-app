@@ -28,7 +28,7 @@ export default Home = ({ navigation }) => {
                 pokemonsArray.push({
                 id: pokemonDetails.id,
                 name: pokemonDetails.name,
-                type: pokemonDetails.types[0].type.name,
+                types: pokemonDetails.types,
                 order: pokemonDetails.order,
                 image: pokemonDetails.sprites.other["official-artwork"].front_default,
                 });
@@ -80,14 +80,14 @@ const styles = StyleSheet.create({
         fontSize: 32,
         marginBottom: 10,
         fontWeight: '700',
-        marginHorizontal: 40,
+        marginHorizontal: 30,
         color: textColor.black,
     },
     description: {
         fontSize: 16,
         marginBottom: 25,
         fontWeight: '400',
-        marginHorizontal: 40,
+        marginHorizontal: 30,
         color: textColor.grey,
     },
     searchBox: {
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         fontWeight: '400',
         textAlign: 'center',
-        marginHorizontal: 40,
+        marginHorizontal: 30,
         backgroundColor: background.default,
     },
 });

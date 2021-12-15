@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
 
 import { width } from '../../../utils/constants';
-import { backgroundColors } from '../../../utils/colors';
+import { backgroundTypeColors } from '../../../utils/colors';
 
 import { DOTS_CARD } from '../../../assets/Images';
 import { POKEBALL_CARD } from '../../../assets/Images';
@@ -10,34 +10,37 @@ import { POKEBALL_CARD } from '../../../assets/Images';
 // import Tag from './Tag';
 
 export default PokemonCard = ({ pokemon }) => {
-  let type = 'grass';
-  if (pokemon > 3) {
-    type = 'fire';
+  let nationalNumber = pokemon.id.toString();
+  if(nationalNumber.length < 3) {
+    for (let i=0; i<=3-nationalNumber.length; i++) {
+      nationalNumber = '0' + nationalNumber;
+    }
   }
+  console.log(pokemon);
 
   return (
-    <View style={{...styles.card, backgroundColor: backgroundColors[type]}}>
+    <View style={[styles.card, { backgroundColor: backgroundTypeColors[pokemon.type]} ]}>
       <View style={{padding: 15, paddingRight: 0, width: width / 1.8}}>
         <View style={{position: 'absolute', right: 0, top: 5}}>
-          <Image source={Dots_card} style={{width: 100, height: 40}} />
+          <Image source={DOTS_CARD} style={{width: 100, height: 40}} />
         </View>
-        <Text style={styles.number}>#0001</Text>
-        <Text style={styles.title}>Bulbasaur</Text>
+        <Text style={styles.number}>#{nationalNumber}</Text>
+        <Text style={styles.name}>{pokemon.name}</Text>
         <View style={styles.row}>
-          <Tag type={type} />
-          <Tag type="poison" />
+          {/* <Tag type={type} />
+          <Tag type="poison" /> */}
         </View>
       </View>
 
       <ImageBackground
         resizeMode="contain"
-        source={Pokeball_card}
+        source={POKEBALL_CARD}
         style={styles.imageBackground}>
         <View style={styles.imageContainer}>
           <Image
             style={styles.image}
             source={{
-              uri: `https://pokeres.bastionbot.org/images/pokemon/${pokemon}.png`,
+              uri: pokemon.image,
             }}
           />
         </View>

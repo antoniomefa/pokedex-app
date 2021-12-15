@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import {StyleSheet, View, Text, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { POKEBALL_HEADER } from '../../assets/Images';
+import { SEARCH_ICON } from '../../assets/Icons';
+import { background, textColor } from '../../utils/colors';
 import { apiConnect } from '../../services/apiConnect';
-
 import PokemonList from './components/PokemonList';
 
 export default Home = ({ navigation }) => {
@@ -42,26 +44,26 @@ export default Home = ({ navigation }) => {
     }
 
     return (
-        <SafeAreaView style={{ flex: 1, justifyContent: 'space-between', alignItems: 'center' }} >
-            
-                <View style={styles.header}>
-                    <Text style={styles.title}>
-                        Pokédex
-                    </Text>
-                    <Text style={styles.description}>Búsca tu pokemon por nombre o usando el número de Pokedéx Nacional</Text>
-                </View>
-                <View style={styles.searchWrapper}>
+        <SafeAreaView style={styles.container} >
+            <ImageBackground 
+                style={styles.header}
+                resizeMode="contain"
+                source={POKEBALL_HEADER}>
+                
+                <Text style={styles.title}>Pokédex</Text>
+                <Text style={styles.description}>Búsca tu pokemon por nombre o usando el número de Pokedéx Nacional</Text>
+                
                     <TextInput
-                        style={styles.input}
+                        style={styles.searchBox}
+                        inlineImageLeft={SEARCH_ICON}
                         placeholder="¿Qué Pokemón estás buscando?"
                         onChangeText={(text) => this.setState({text})}
                         value={searchText}
                     />
-                </View>
-                <TouchableOpacity style={{backgroundColor: 'lightblue', width: 80}} onPress={() => navigation.navigate('Info')}>
-                    <Text style={{ color: 'black'}}>Ir a Info</Text>
-                </TouchableOpacity>
-                <PokemonList pokemonsList={pokemonsList} onPress={onSelectPokemon} />
+            </ImageBackground>
+
+
+            <PokemonList pokemonsList={pokemonsList} onPress={onSelectPokemon} />
         </SafeAreaView>
     );
 }
@@ -69,35 +71,33 @@ export default Home = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: background.white,
     },
     header: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        marginTop: -45,
     },
     title: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: '#000',
+        fontSize: 32,
+        marginBottom: 10,
+        fontWeight: '700',
+        marginHorizontal: 40,
+        color: textColor.black,
     },
     description: {
-        fontSize: 20,
-        color: '#000',
+        fontSize: 16,
+        marginBottom: 25,
+        fontWeight: '400',
+        marginHorizontal: 40,
+        color: textColor.grey,
     },
-    search: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    input: {
-        height: 40,
-        width: '90%',
-        borderColor: 'gray',
-        borderWidth: 1,
-        marginTop: 10,
-        marginBottom: 10,
+    searchBox: {
+        height: 60,
+        fontSize: 16,
+        borderRadius: 10,
+        marginBottom: 20,
+        fontWeight: '400',
+        textAlign: 'center',
+        marginHorizontal: 40,
+        backgroundColor: background.default,
     },
 });

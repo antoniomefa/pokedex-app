@@ -7,7 +7,7 @@ import { textColor, backgroundTypeColors } from '../../../utils/colors';
 import { DOTS_CARD } from '../../../assets/Images';
 import { POKEBALL_CARD } from '../../../assets/Images';
 
-import Tag from './Tag';
+import Tag from '../../../components/Tag';
 
 export default PokemonCard = ({ pokemon }) => {
   let nationalNumber = pokemon.id.toString();
@@ -16,7 +16,6 @@ export default PokemonCard = ({ pokemon }) => {
       nationalNumber = '0' + nationalNumber;
     }
   }
-  console.log(pokemon);
 
   return (
     <View style={[styles.card, { backgroundColor: backgroundTypeColors[pokemon.types[0].type.name]} ]}>
@@ -29,11 +28,13 @@ export default PokemonCard = ({ pokemon }) => {
 
         <Text style={styles.number}>#{nationalNumber}</Text>
         <Text style={styles.name}>{pokemon.name}</Text>
+        
         <View style={styles.typesRow}>
           {pokemon.types.map((type, index) => (
             <Tag type={type.type.name} key={index}/>
           ))}
         </View>
+
       </View>
 
       <ImageBackground

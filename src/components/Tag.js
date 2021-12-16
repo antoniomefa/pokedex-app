@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 
-import {typeColors, textColor} from '../../../utils/colors';
+import {typeColors, textColor} from '../utils/colors';
 
 import Icon from './Icon';
 

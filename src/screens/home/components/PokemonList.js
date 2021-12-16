@@ -7,7 +7,7 @@ export default function PokemonList({ pokemonsList, onPress }) {
     return (
         <View style={styles.container}>
             <FlatList
-                data={pokemonsList.filter((pokemon, index) => pokemonsList.indexOf(pokemon === index))} // filter out duplicates
+                data={pokemonsList.filter((pokemon, index) => pokemonsList.indexOf(pokemon === index))} // Filtrar duplicados
                 renderItem={({ item }) => (
                         <TouchableOpacity onPress={() => onPress(item)}>
                             <PokemonCard pokemon={item} />

@@ -3,7 +3,7 @@ import {StyleSheet, View, Text, TextInput, ImageBackground, TouchableOpacity } f
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { POKEBALL_HEADER } from '../../assets/Images';
-import { SEARCH_ICON } from '../../assets/Icons';
+// import { SEARCH_ICON } from '../../assets/Icons';
 import { background, textColor } from '../../utils/colors';
 import { apiConnect } from '../../services/apiConnect';
 import PokemonList from './components/PokemonList';
@@ -55,9 +55,9 @@ export default Home = ({ navigation }) => {
                 
                     <TextInput
                         style={styles.searchBox}
-                        inlineImageLeft={SEARCH_ICON}
+                        //inlineImageLeft={SEARCH_ICON}
                         placeholder="¿Qué Pokemón estás buscando?"
-                        onChangeText={(text) => this.setState({text})}
+                        onChangeText={(text) => seTsearchText({text})}
                         value={searchText}
                     />
             </ImageBackground>

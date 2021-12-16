@@ -1,13 +1,14 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Image} from 'react-native';
 
 import {typeColors, textColor} from '../../../utils/colors';
+
 import Icon from './Icon';
 
 const Tag = ({type}) => {
   return (
     <View style={{...styles.tag, backgroundColor: typeColors[type]}}>
-      {/* <Icon style={{paddingHorizontal: 0}} name={type} width={10} height={10} /> */}
+      <Icon style={{paddingHorizontal: 0, color: 'white'}}  width={15} height={15} name={type}/>
       <Text style={styles.text}>
         {type}
       </Text>
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   text: {
-    marginLeft: 2,
+    marginLeft: 4,
     fontSize: 12,
     fontWeight: 'bold',
     color: textColor.white,

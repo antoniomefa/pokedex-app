@@ -54,9 +54,10 @@ export default PokemonHero = ({ pokemon }) => {
 
 const styles = StyleSheet.create({
     container: {
-      flexDirection: 'row',
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        minHeight: '30%',
     },
     infoPokemon: {
       padding: 20,

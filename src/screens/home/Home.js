@@ -32,7 +32,7 @@ export default Home = ({ navigation }) => {
                     image: pokemonDetails.sprites.other["official-artwork"].front_default,
                     height: pokemonDetails.height,
                     weight: pokemonDetails.weight,
-                    // abilities: pokemonDetails.abilities.map(ability => ability.ability.name),
+                    abilities: pokemonDetails.abilities.map(ability => ability.ability.name),
                 });
             }
             setPokemonsList([...pokemonsList, ...pokemonsArray]);

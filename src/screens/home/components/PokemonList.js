@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 
 import PokemonCard from './PokemonCard';
 
-export default function PokemonList({ pokemonsList, onPress }) {
+export default function PokemonList({ pokemonsList, onPress, getMoreData }) {
     return (
         <View style={styles.container}>
             <FlatList
@@ -15,6 +15,8 @@ export default function PokemonList({ pokemonsList, onPress }) {
                     )}
                 keyExtractor={item => String(item.id)}
                 showsVerticalScrollIndicator={false}
+                onEndReached={() => getMoreData(pokemonsList.length)}
+                onEndReachedThreshold={0.5}
             />
         </View>
     );

@@ -1,8 +1,8 @@
 import { API_URL } from "../utils/constants";
 
-export const apiConnect = async( url, endpoint ) => {
+export const apiConnect = async( url, endpoint, query ) => {
     try{
-        const customUrl = url ? url : `${API_URL}/${endpoint}?limit=20&offset=0`;
+        const customUrl = url ? url : `${API_URL}/${endpoint}${query ? `${query}` : ''}`;
         const response = await fetch(customUrl);
         const data = await response.json();
         return data;

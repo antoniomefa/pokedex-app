@@ -10,29 +10,33 @@ import PokemonList from './components/PokemonList';
 export default Home = ({ navigation }) => {
     const [searchText, seTsearchText] = useState('');
     const [pokemonsList, setPokemonsList] = useState([]);
-    // console.log("PkemonsList------>", pokemonsList);
+    const [pagCounter, setPagCounter] = useState(0);
+    const [getMorePokemons, setGetMorePokemons] = useState(null);
 
     useEffect(() => {
         (async() => {
             await getPokemons();
         })()
-    }, []);
+    }, [getMorePokemons]);
 
     const getPokemons = async () => {
         try {
-            const response = await apiConnect(null, 'pokemon');
+            const response = await apiConnect(null, 'pokemon', `?limit=${pagCounter}&offset=${pagCounter}`);
             const pokemonsArray = [];
             for await (const pokemon of response.results) {
                 const pokemonDetails = await apiConnect(pokemon.url);
                 pokemonsArray.push({
-                id: pokemonDetails.id,
-                name: pokemonDetails.name,
-                types: pokemonDetails.types,
-                order: pokemonDetails.order,
-                image: pokemonDetails.sprites.other["official-artwork"].front_default,
+                    id: pokemonDetails.id,
+                    name: pokemonDetails.name,
+                    types: pokemonDetails.types,
+                    image: pokemonDetails.sprites.other["official-artwork"].front_default,
+                    height: pokemonDetails.height,
+                    weight: pokemonDetails.weight,
+                    // abilities: pokemonDetails.abilities.map(ability => ability.ability.name),
                 });
             }
             setPokemonsList([...pokemonsList, ...pokemonsArray]);
+            setPagCounter(pagCounter + 20);
         } catch(error) {  
             console.log("🚀 ~ file: Home.js ~ line 22 ~ getPokemons ~ error", error)
         }
@@ -60,7 +64,7 @@ export default Home = ({ navigation }) => {
                     />
             </ImageBackground>
 
-            <PokemonList pokemonsList={pokemonsList} onPress={onSelectPokemon} />
+            <PokemonList pokemonsList={pokemonsList} onPress={onSelectPokemon} getMoreData={setGetMorePokemons}/>
         </SafeAreaView>
     );
 }

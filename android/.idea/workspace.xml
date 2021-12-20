@@ -5,24 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c5a2259-e0a5-4a6f-935e-2525f76eeb2f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/assets/Images/Pokeball.png" beforeDir="false" afterPath="$PROJECT_DIR$/../src/assets/Images/Pokeball.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/screens/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/screens/home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/screens/home/components/PokemonList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/screens/home/components/PokemonList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/screens/info/Info.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/screens/info/Info.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/screens/info/components/PokemonHero.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/screens/info/components/PokemonHero.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../src/services/ApiConnect.js" beforeDir="false" afterPath="$PROJECT_DIR$/../src/services/ApiConnect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[436231ac]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/antonio/.android/avd/Pixel_3a_API_30_x86.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="pokedex_app" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -119,5 +130,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

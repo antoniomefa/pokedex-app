@@ -3,7 +3,7 @@ import {StyleSheet, ScrollView, Image, View, Text, TouchableOpacity } from 'reac
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { apiConnect } from '../../services/apiConnect';
-import { backgroundTypeColors } from '../../utils/colors';
+import { backgroundTypeColors, textColor } from '../../utils/colors';
 import { ARROW_BACK } from '../../assets/Images';
 import PokemonHero from './components/PokemonHero';
 import Dashboard from './components/Dashboard';
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flex: 1,
+        zIndex: 99,
         flexDirection: 'row',
         marginLeft: 20,
         marginTop: Platform.OS === 'ios' ? -40 : 20,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     headerTitle: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#fff',
+        color: textColor.white,
         marginLeft: 20,
         textTransform: 'capitalize',
     },

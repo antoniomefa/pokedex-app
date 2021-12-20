@@ -1,30 +1,35 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import { background, typeColors, textColor } from '../../../utils/colors';
+import { typeColors, textColor } from '../../../utils/colors';
+import DashBoardTitle from './DashboardTitle';
+import GraphicRow from './GraphicRow';
+import InfoRow from './InfoRow';
 
-const Stats = ({ pokemon, about }) => {
+const About = ({ pokemon, types }) => {
+    const styleColor = typeColors[pokemon.types[0].type.name];
 
     return(
-        <View style={styles.container}>
-            <Text style={[styles.title, {color: typeColors[pokemon.types[0].type.name]}]}>Dashboard</Text>
+        <View >
+            <DashBoardTitle title='Estadísticas base' styleColor={styleColor} />
+            {
+                pokemon.stats.map((stat, index) => {
+                    return(
+                    <GraphicRow stat={stat} styleColor={styleColor} key={index}/>
+                )})
+            }
+
+            <DashBoardTitle title='Daño inflingido' styleColor={styleColor} />
+            <InfoRow label='X 2' icons={types[0]?.double_damage_to}/>
+            <InfoRow label='X 0.5' icons={types[0]?.half_damage_to}/>
+            <InfoRow label='X 0' icons={types[0]?.no_damage_to}/>
+            
+            <DashBoardTitle title='Daño recibido' styleColor={styleColor} />
+            <InfoRow label='X 2' icons={types[0]?.double_damage_from}/>
+            <InfoRow label='X 0.5' icons={types[0]?.half_damage_from}/>
+            <InfoRow label='X 0' icons={types[0]?.no_damage_from}/>
         </View> 
     );
 };
 
-export default Stats;
-
-const styles = StyleSheet.create({
-    container: {
-    },
-    title: {
-        fontSize: 16,
-        fontWeight: '700',
-    },
-    description: {
-        fontSize: 16,
-        fontWeight: '400',
-        lineHeight: 19,
-        color: textColor.grey,
-    },
-});
+export default About;

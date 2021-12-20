@@ -5,13 +5,16 @@ import {typeColors, textColor} from '../utils/colors';
 
 import Icon from './Icon';
 
-const Tag = ({type}) => {
+const Tag = ({type, isIcon}) => {
   return (
     <View style={{...styles.tag, backgroundColor: typeColors[type]}}>
       <Icon style={{paddingHorizontal: 0, color: 'white'}}  width={15} height={15} name={type}/>
-      <Text style={styles.text}>
-        {type}
-      </Text>
+      {
+        !isIcon &&
+        <Text style={styles.text}>
+          {type}
+        </Text>
+      }
     </View>
   );
 };

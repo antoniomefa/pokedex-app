@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {StyleSheet, View, Text, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, TextInput, ImageBackground, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { POKEBALL_HEADER } from '../../assets/Images';
@@ -33,6 +33,7 @@ export default Home = ({ navigation }) => {
                     height: pokemonDetails.height,
                     weight: pokemonDetails.weight,
                     abilities: pokemonDetails.abilities.map(ability => ability.ability.name),
+                    stats: pokemonDetails.stats,
                 });
             }
             setPokemonsList([...pokemonsList, ...pokemonsArray]);
@@ -73,9 +74,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: background.white,
+        marginTop: Platform.OS === 'ios' ? 60 : 0,
     },
     header: {
-        marginTop: -45,
+        marginTop: Platform.OS === 'ios' ? -45 : 0,
     },
     title: {
         fontSize: 32,

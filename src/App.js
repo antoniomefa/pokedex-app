@@ -13,7 +13,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Info" component={Info} options={{cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS}}/>
         </Stack.Navigator>

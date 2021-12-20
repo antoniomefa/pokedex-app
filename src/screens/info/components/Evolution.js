@@ -1,27 +1,45 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
-import { background, typeColors, textColor } from '../../../utils/colors';
+import { typeColors, textColor } from '../../../utils/colors';
+import DashBoardTitle from './DashboardTitle';
+import EvolutionAvatar from './EvolutionAvatar';
 
-const Evolution = ({ pokemon, about }) => {
+const About = ({ pokemon, evolution }) => {
+    const styleColor = typeColors[pokemon.types[0].type.name];
 
     return(
-        <View style={styles.container}>
-            <Text style={styles.description}>Evolution</Text>
+        <View >
+            <DashBoardTitle title='Cadena evolutiva' styleColor={styleColor} />
+            <View style={styles.evolutionChainWrapper} >
+            {
+                evolution && evolution.map((pokemon, index) => {
+                    return(
+                        <View key={index}>
+                            {
+                                index !== 0 && 
+                                <Text style={styles.nextLevelText}>{`En el nivel ${pokemon.minLevel} evoluciona en :`}</Text>
+                            }
+                            <EvolutionAvatar pokemon={pokemon} />
+                        </View>
+                    )
+                })
+            }
+            </View>
         </View> 
     );
 };
 
-export default Evolution;
+export default About;
 
 const styles = StyleSheet.create({
-    container: {
-        marginTop: 10,
+    evolutionChainWrapper: {
+        alignItems: 'center',
     },
-    description: {
-        fontSize: 16,
-        fontWeight: '400',
-        lineHeight: 19,
+    nextLevelText: {
         color: textColor.grey,
+        fontSize: 16,
+        marginVertical: 16,
+        fontWeight: '500',
     },
 });

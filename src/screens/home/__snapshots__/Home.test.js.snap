@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Home correctly 1`] = `
+<RNCSafeAreaView
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+      "marginTop": 60,
+    }
+  }
+>
+  <View
+    accessibilityIgnoresInvertColors={true}
+    style={
+      Object {
+        "marginTop": -45,
+      }
+    }
+  >
+    <Image
+      resizeMode="contain"
+      source={
+        Object {
+          "testUri": "../../../src/assets/Images/Pokeball_header.png",
+        }
+      }
+      style={
+        Array [
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+          Object {
+            "height": undefined,
+            "width": undefined,
+          },
+          undefined,
+        ]
+      }
+    />
+    <Text
+      style={
+        Object {
+          "color": "#17171B",
+          "fontSize": 32,
+          "fontWeight": "700",
+          "marginBottom": 10,
+          "marginHorizontal": 30,
+        }
+      }
+    >
+      Pokédex
+    </Text>
+    <Text
+      style={
+        Object {
+          "color": "#747476",
+          "fontSize": 16,
+          "fontWeight": "400",
+          "marginBottom": 25,
+          "marginHorizontal": 30,
+        }
+      }
+    >
+      Búsca tu pokemon por nombre o usando el número de Pokedéx Nacional
+    </Text>
+    <TextInput
+      onChangeText={[Function]}
+      placeholder="¿Qué Pokemón estás buscando?"
+      style={
+        Object {
+          "backgroundColor": "#F2F2F2",
+          "borderRadius": 10,
+          "fontSize": 16,
+          "fontWeight": "400",
+          "height": 60,
+          "marginBottom": 20,
+          "marginHorizontal": 30,
+          "textAlign": "center",
+        }
+      }
+      value=""
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "marginHorizontal": 30,
+        "marginTop": 25,
+      }
+    }
+  >
+    <RCTScrollView
+      data={Array []}
+      getItem={[Function]}
+      getItemCount={[Function]}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onEndReached={[Function]}
+      onEndReachedThreshold={0.5}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      showsVerticalScrollIndicator={false}
+      stickyHeaderIndices={Array []}
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View />
+    </RCTScrollView>
+  </View>
+</RNCSafeAreaView>
+`;

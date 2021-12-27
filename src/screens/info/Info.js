@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import {StyleSheet, ScrollView, Image, View, Text, TouchableOpacity } from 'react-native';
+import {StyleSheet, ScrollView, Image, Text, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { apiConnect } from '../../services/apiConnect';
+import { apiConnect } from '../../services/ApiConnect';
 import { backgroundTypeColors, textColor } from '../../utils/colors';
 import { ARROW_BACK } from '../../assets/Images';
 import PokemonHero from './components/PokemonHero';

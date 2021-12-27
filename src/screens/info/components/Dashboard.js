@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 
 import { background, textColor } from '../../../utils/colors';
-import { apiConnect } from '../../../services/apiConnect';
+import { apiConnect } from '../../../services/ApiConnect';
 import { POKEBALL } from '../../../assets/Images';
 
 import About from './About';

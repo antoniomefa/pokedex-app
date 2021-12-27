@@ -15,7 +15,6 @@ React Native exercise App that consumes an api (https://pokeapi.co/) and display
 
 ## Instrucciones para correr el proyecto
 
-- Asegurate de tener configurado el ambiente de React-Native: https://reactnative.dev/docs/environment-setup
 - Clonar el repositorio con el comando "git clone git@github.com:antoniomefa/pokedex-app.git"
 - Para instalar las dependencias ejecutar el comando "yarn install"
 - Inicializar el proyecto con el comando "yarn postinstall"

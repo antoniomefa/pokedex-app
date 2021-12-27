@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import {StyleSheet, Text, TextInput, ImageBackground, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { POKEBALL_HEADER } from '../../assets/Images';
 import { background, textColor } from '../../utils/colors';
-import { apiConnect } from '../../services/apiConnect';
+import { apiConnect } from '../../services/ApiConnect';
 import PokemonList from './components/PokemonList';
+import { setPokemonsList } from '../../services/redux/homeSlice';
 
 export default Home = ({ navigation }) => {
-    const [searchText, seTsearchText] = useState('');
-    const [pokemonsList, setPokemonsList] = useState([]);
+    const pokemonsList = useSelector(state => state.homeReducer.pokemonsList);
+    const dispatch = useDispatch();
+    const [searchText, setSerachText] = useState('');
+    // const [pokemonsList, setPokemonsList] = useState([]);
     const [pagCounter, setPagCounter] = useState(0);
     const [getMorePokemons, setGetMorePokemons] = useState(null);
 
@@ -21,7 +25,7 @@ export default Home = ({ navigation }) => {
 
     const getPokemons = async () => {
         try {
-            const response = await apiConnect(null, 'pokemon', `?limit=${pagCounter}&offset=${pagCounter}`);
+            const response = await apiConnect(null, 'pokemon', `?limit=${20}&offset=${pagCounter}`);
             const pokemonsArray = [];
             for await (const pokemon of response.results) {
                 const pokemonDetails = await apiConnect(pokemon.url);
@@ -36,7 +40,8 @@ export default Home = ({ navigation }) => {
                     stats: pokemonDetails.stats,
                 });
             }
-            setPokemonsList([...pokemonsList, ...pokemonsArray]);
+            console.log("🚀 ~ file: Home.js ~ line 44 ~ getPokemons ~ pokemonsArray", pokemonsArray)
+            dispatch(setPokemonsList(pokemonsArray));
             setPagCounter(pagCounter + 20);
         } catch(error) {  
             console.log("🚀 ~ file: Home.js ~ line 22 ~ getPokemons ~ error", error)
@@ -60,7 +65,7 @@ export default Home = ({ navigation }) => {
                     <TextInput
                         style={styles.searchBox}
                         placeholder="¿Qué Pokemón estás buscando?"
-                        onChangeText={(text) => seTsearchText({text})}
+                        onChangeText={(text) => setSerachText({text})}
                         value={searchText}
                     />
             </ImageBackground>

@@ -5,7 +5,6 @@ export const homeSlice = createSlice({
     initialState: {
         pokemonsList: [],
         pagCounter: 0,
-        searchText: "",
     },
     reducers: {
     // Redux Toolkit allows us to write "mutating" logic in reducers. It
@@ -18,12 +17,9 @@ export const homeSlice = createSlice({
         setPagCounter: (state, action) => {
             state.pagCounter += 20;
         },
-        setSearchText: (state, action) => {
-            state.searchText = action.payload;
-        },
     },
 });
 
-export const { setPokemonsList, setPagCounter, setGetMorePokemons, setSearchText } = homeSlice.actions;
+export const { setPokemonsList, setPagCounter } = homeSlice.actions;
 
 export default homeSlice.reducer;

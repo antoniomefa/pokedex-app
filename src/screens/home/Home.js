@@ -7,18 +7,18 @@ import { POKEBALL_HEADER } from '../../assets/Images';
 import { background, textColor } from '../../utils/colors';
 import { apiConnect } from '../../services/ApiConnect';
 import PokemonList from './components/PokemonList';
-import { setPokemonsList } from '../../services/redux/homeSlice';
+import { setPokemonsList, setPagCounter } from '../../services/redux/homeSlice';
 
 export default Home = ({ navigation }) => {
-    const pokemonsList = useSelector(state => state.homeReducer.pokemonsList);
     const dispatch = useDispatch();
+    const pokemonsList = useSelector(state => state.homeReducer.pokemonsList);
+    const pagCounter = useSelector(state => state.homeReducer.pagCounter);
     const [searchText, setSerachText] = useState('');
-    // const [pokemonsList, setPokemonsList] = useState([]);
-    const [pagCounter, setPagCounter] = useState(0);
     const [getMorePokemons, setGetMorePokemons] = useState(null);
 
     useEffect(() => {
         (async() => {
+            if (pagCounter <= 890)
             await getPokemons();
         })()
     }, [getMorePokemons]);
@@ -40,9 +40,8 @@ export default Home = ({ navigation }) => {
                     stats: pokemonDetails.stats,
                 });
             }
-            console.log("🚀 ~ file: Home.js ~ line 44 ~ getPokemons ~ pokemonsArray", pokemonsArray)
             dispatch(setPokemonsList(pokemonsArray));
-            setPagCounter(pagCounter + 20);
+            dispatch(setPagCounter());
         } catch(error) {  
             console.log("🚀 ~ file: Home.js ~ line 22 ~ getPokemons ~ error", error)
         }

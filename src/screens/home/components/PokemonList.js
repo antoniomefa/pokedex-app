@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { textColor } from '../../../utils/colors';
 
 import PokemonCard from './PokemonCard';
 
@@ -16,7 +17,8 @@ export default function PokemonList({ pokemonsList, onPress, getMoreData }) {
                 keyExtractor={item => String(item.id)}
                 showsVerticalScrollIndicator={false}
                 onEndReached={() => getMoreData(pokemonsList.length)}
-                onEndReachedThreshold={0.5}
+                onEndReachedThreshold={0.1}
+                ListFooterComponent={<ActivityIndicator size="large" style={styles.spinner} />}
             />
         </View>
     );
@@ -27,5 +29,10 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 25,
         marginHorizontal: 30,
+    },
+    spinner: {
+        marginTop: 20,
+        marginBottom: 50,
+        color: textColor.grey,
     },
 });
